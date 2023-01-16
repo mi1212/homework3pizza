@@ -17,8 +17,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = LoginViewController()
+        let nc = UINavigationController(rootViewController: LoginViewController())
+        self.window?.rootViewController = nc
         self.window?.makeKeyAndVisible()
+    }
+    
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        
+        // меняем рутконтроллер
+        window.rootViewController = vc
+        
+        // анимация перехода при смене
+            UIView.transition(with: window,
+                              duration: 0.5,
+                              options: [.showHideTransitionViews],
+                              animations: nil,
+                              completion: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -9,6 +9,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private let iconImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "pizza")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     private let textFieldsStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = 16
@@ -16,6 +24,16 @@ class LoginViewController: UIViewController {
         stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.setTitle("login", for: .normal)
+        button.backgroundColor = .systemTeal
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private let phoneTextField: UITextField = {
@@ -33,6 +51,7 @@ class LoginViewController: UIViewController {
         textfield.layer.borderColor = UIColor.lightGray.cgColor
         textfield.layer.borderWidth = 2
         textfield.clipsToBounds = true
+        textfield.placeholder = "phone number"
         textfield.backgroundColor = .white
         textfield.clearButtonMode = .whileEditing
         textfield.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +76,7 @@ class LoginViewController: UIViewController {
         textfield.clipsToBounds = true
         textfield.clearButtonMode = .whileEditing
         textfield.isSecureTextEntry = true
+        textfield.placeholder = "password"
         textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
@@ -69,8 +89,12 @@ class LoginViewController: UIViewController {
     
     private func setupLayout() {
         self.view.addSubview(textFieldsStack)
+        self.view.addSubview(iconImageView)
+        self.view.addSubview(loginButton)
         textFieldsStack.addArrangedSubview(phoneTextField)
         textFieldsStack.addArrangedSubview(passTextField)
+        
+        loginButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         
         let inset: CGFloat = 16
         
@@ -81,6 +105,34 @@ class LoginViewController: UIViewController {
             textFieldsStack.heightAnchor.constraint(equalToConstant: 112),
             
         ])
+        
+        NSLayoutConstraint.activate([
+            iconImageView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1),
+            iconImageView.widthAnchor.constraint(equalTo: iconImageView.heightAnchor),
+            iconImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            iconImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: inset*3)
+        ])
+        
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor, constant: inset*3),
+            loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: inset*2),
+            loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -inset*2),
+            loginButton.heightAnchor.constraint(equalToConstant: 56),
+            
+        ])
     }
     
+    @objc private func tapButton() {
+        loginButton.animationTapButton()
+        passTextField.shakeTextFieldifEmpty()
+        phoneTextField.shakeTextFieldifEmpty()
+        let pass = passTextField.text
+        let phone = phoneTextField.text
+        if pass == "123456" && phone == "987654321" {
+            let vc = UINavigationController(rootViewController: ProductsViewController())
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
+        }
+        
+    }
 }
+

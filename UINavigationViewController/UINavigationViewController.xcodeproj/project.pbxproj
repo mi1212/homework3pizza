@@ -15,6 +15,7 @@
 		FD28F81629757AA70026C8A6 /* UIButton + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F81529757AA70026C8A6 /* UIButton + Extention.swift */; };
 		FD28F81829757BA30026C8A6 /* UITexfield+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F81729757BA30026C8A6 /* UITexfield+Extention.swift */; };
 		FD28F81A29757FEA0026C8A6 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F81929757FEA0026C8A6 /* ProductsViewController.swift */; };
+		FD28F81C29758CC10026C8A6 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F81B29758CC10026C8A6 /* ProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		FD28F81529757AA70026C8A6 /* UIButton + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extention.swift"; sourceTree = "<group>"; };
 		FD28F81729757BA30026C8A6 /* UITexfield+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITexfield+Extention.swift"; sourceTree = "<group>"; };
 		FD28F81929757FEA0026C8A6 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		FD28F81B29758CC10026C8A6 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				FD28F7FF29755BEB0026C8A6 /* AppDelegate.swift */,
 				FD28F81329755C5D0026C8A6 /* LoginViewController.swift */,
 				FD28F81529757AA70026C8A6 /* UIButton + Extention.swift */,
+				FD28F81B29758CC10026C8A6 /* ProductView.swift */,
 				FD28F81929757FEA0026C8A6 /* ProductsViewController.swift */,
 				FD28F81729757BA30026C8A6 /* UITexfield+Extention.swift */,
 				FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */,
@@ -147,6 +150,7 @@
 				FD28F81629757AA70026C8A6 /* UIButton + Extention.swift in Sources */,
 				FD28F81429755C5E0026C8A6 /* LoginViewController.swift in Sources */,
 				FD28F80029755BEB0026C8A6 /* AppDelegate.swift in Sources */,
+				FD28F81C29758CC10026C8A6 /* ProductView.swift in Sources */,
 				FD28F80229755BEB0026C8A6 /* SceneDelegate.swift in Sources */,
 				FD28F81829757BA30026C8A6 /* UITexfield+Extention.swift in Sources */,
 			);

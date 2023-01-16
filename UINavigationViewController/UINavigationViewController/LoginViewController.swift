@@ -128,10 +128,11 @@ class LoginViewController: UIViewController {
         phoneTextField.shakeTextFieldifEmpty()
         let pass = passTextField.text
         let phone = phoneTextField.text
-        if pass == "123456" && phone == "987654321" {
-            let vc = UINavigationController(rootViewController: ProductsViewController())
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
-        }
+//        if pass == "123456" && phone == "987654321" {
+            let vc = ProductsViewController()
+            self.navigationController?.setViewControllers([vc], animated: true)
+//        }
+        
         
     }
 }

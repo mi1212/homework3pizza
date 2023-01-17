@@ -11,6 +11,8 @@ class ProductViewController: UIViewController {
     // массив дополнительных ингридиентов
     var addsArray = [String]()
     
+    var pizza: Pizza?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -55,6 +57,7 @@ class ProductViewController: UIViewController {
     
     init(pizza: Pizza) {
         super.init(nibName: nil, bundle: nil)
+        self.pizza = pizza
         setupLayout()
         setupData(pizza: pizza)
         setupProperts()
@@ -130,6 +133,8 @@ class ProductViewController: UIViewController {
     
     @objc private func tapButton() {
         checkoutButton.animationTapButton()
+        guard let pizza = self.pizza else { return }
+        let vc = CheckoutViewController(pizza: pizza , adds: self.addsArray)
     }
 
 }

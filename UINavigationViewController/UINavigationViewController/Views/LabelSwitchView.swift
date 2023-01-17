@@ -40,6 +40,7 @@ final class LabelSwitchView: UIView {
         setupTarget()
     }
     
+    @available (*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

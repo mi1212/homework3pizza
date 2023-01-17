@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ProductViewDelegate: AnyObject {
+    func tapPlusButton()
+}
+
 class ProductView: UIView {
+    
+    var delegate: ProductViewDelegate?
 
     private let image: UIImageView = {
         let image = UIImageView()
@@ -23,10 +29,11 @@ class ProductView: UIView {
         return label
     }()
     
-    private let chectoutImage: UIImageView = {
+    private let plusImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(systemName: "cart")
+        image.image = UIImage(systemName: "plus.app.fill")
+        image.tintColor = .systemTeal
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -36,6 +43,7 @@ class ProductView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         setupProperts(name)
         setupLayout()
+        addGesture()
     }
     
     @available (*, unavailable)
@@ -55,7 +63,7 @@ class ProductView: UIView {
     private func setupLayout() {
         self.addSubview(image)
         self.addSubview(label)
-        self.addSubview(chectoutImage)
+        self.addSubview(plusImage)
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -71,16 +79,28 @@ class ProductView: UIView {
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset),
             label.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: inset),
             label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset),
-//            label.widthAnchor.constraint(equalTo: self.heightAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            chectoutImage.topAnchor.constraint(equalTo: self.topAnchor, constant: inset*4),
-            chectoutImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: inset*2),
-            chectoutImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset*4),
-            chectoutImage.widthAnchor.constraint(equalTo: self.heightAnchor),
+            plusImage.topAnchor.constraint(equalTo: self.topAnchor, constant: inset*4),
+            plusImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset*2),
+            plusImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset*4),
+            plusImage.widthAnchor.constraint(equalTo: plusImage.heightAnchor),
             
         ])
     }
     
+    private func addGesture() {
+        let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapPizza))
+        gesture.numberOfTapsRequired = 1
+        plusImage.isUserInteractionEnabled = true
+        plusImage.addGestureRecognizer(gesture)
+    }
+
+    @objc private func tapPizza() {
+        delegate?.tapPlusButton()
+    }
+    
 }
+
+

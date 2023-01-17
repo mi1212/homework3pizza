@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD0E981A29769C500009983F /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0E981929769C500009983F /* ProductViewController.swift */; };
 		FD28F80029755BEB0026C8A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F7FF29755BEB0026C8A6 /* AppDelegate.swift */; };
 		FD28F80229755BEB0026C8A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */; };
 		FD28F80929755BEC0026C8A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD28F80829755BEC0026C8A6 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD0E981929769C500009983F /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		FD28F7FC29755BEB0026C8A6 /* UINavigationViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UINavigationViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD28F7FF29755BEB0026C8A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				FD28F81529757AA70026C8A6 /* UIButton + Extention.swift */,
 				FD28F81B29758CC10026C8A6 /* ProductView.swift */,
 				FD28F81929757FEA0026C8A6 /* ProductsViewController.swift */,
+				FD0E981929769C500009983F /* ProductViewController.swift */,
 				FD28F81729757BA30026C8A6 /* UITexfield+Extention.swift */,
 				FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */,
 				FD28F80829755BEC0026C8A6 /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 				FD28F80029755BEB0026C8A6 /* AppDelegate.swift in Sources */,
 				FD28F81C29758CC10026C8A6 /* ProductView.swift in Sources */,
 				FD28F80229755BEB0026C8A6 /* SceneDelegate.swift in Sources */,
+				FD0E981A29769C500009983F /* ProductViewController.swift in Sources */,
 				FD28F81829757BA30026C8A6 /* UITexfield+Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

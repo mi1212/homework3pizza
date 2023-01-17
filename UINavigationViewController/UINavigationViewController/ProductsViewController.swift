@@ -9,36 +9,49 @@ import UIKit
 
 class ProductsViewController: UIViewController {
 
-    let pizzaProduct = ProductView(name: "pizza")
+    let pepperoniPizza = ProductView(name: "pizza pepperoni")
     
-    let sushiProduct = ProductView(name: "sushi")
+    let mushroomPizza = ProductView(name: "pizza mushroom")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
+        self.title = "Food"
         setupLayout()
+        setupDelegates()
     }
     
     private func setupLayout() {
-        self.view.addSubview(pizzaProduct)
-        self.view.addSubview(sushiProduct)
+        self.view.addSubview(pepperoniPizza)
+        self.view.addSubview(mushroomPizza)
         
         let inset: CGFloat = 16
         
         NSLayoutConstraint.activate([
-            pizzaProduct.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: inset),
-            pizzaProduct.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            pizzaProduct.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            pizzaProduct.heightAnchor.constraint(equalToConstant: 100)
+            pepperoniPizza.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: inset),
+            pepperoniPizza.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: inset),
+            pepperoniPizza.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -inset),
+            pepperoniPizza.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
-            sushiProduct.topAnchor.constraint(equalTo: pizzaProduct.bottomAnchor, constant: inset),
-            sushiProduct.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            sushiProduct.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            sushiProduct.heightAnchor.constraint(equalToConstant: 100)
+            mushroomPizza.topAnchor.constraint(equalTo: pepperoniPizza.bottomAnchor, constant: inset),
+            mushroomPizza.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: inset),
+            mushroomPizza.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -inset),
+            mushroomPizza.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
+    
+    private func setupDelegates() {
+        pepperoniPizza.delegate = self
+    }
 
+}
 
+extension ProductsViewController: ProductViewDelegate {
+    func tapPlusButton() {
+        let vc = ProductViewController()
+        present(vc, animated: true)
+    }
+ 
 }

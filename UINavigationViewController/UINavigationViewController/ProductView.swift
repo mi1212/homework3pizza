@@ -8,10 +8,12 @@
 import UIKit
 
 protocol ProductViewDelegate: AnyObject {
-    func tapPlusButton()
+    func tapPlusButton(product: Pizza)
 }
 
 class ProductView: UIView {
+    
+    var product: Pizza?
     
     var delegate: ProductViewDelegate?
 
@@ -38,10 +40,11 @@ class ProductView: UIView {
         return image
     }()
     
-    init(name: String) {
+    init(product: Pizza) {
+        self.product = product
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        setupProperts(name)
+        setupProperts(product)
         setupLayout()
         addGesture()
     }
@@ -51,12 +54,13 @@ class ProductView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupProperts(_ name: String) {
+    private func setupProperts(_ product: Pizza) {
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
         self.backgroundColor = .white
-        
-        image.image = UIImage(named: name)
+        let imageName = product.imageName
+        let name = product.name
+        image.image = UIImage(named: imageName)
         label.text = name
     }
     
@@ -98,7 +102,8 @@ class ProductView: UIView {
     }
 
     @objc private func tapPizza() {
-        delegate?.tapPlusButton()
+        guard let product = product else { return }
+        delegate?.tapPlusButton(product: product)
     }
     
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FD0E981A29769C500009983F /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0E981929769C500009983F /* ProductViewController.swift */; };
+		FD0E981C2976ABFF0009983F /* PizzaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0E981B2976ABFF0009983F /* PizzaModel.swift */; };
 		FD28F80029755BEB0026C8A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F7FF29755BEB0026C8A6 /* AppDelegate.swift */; };
 		FD28F80229755BEB0026C8A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */; };
 		FD28F80929755BEC0026C8A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD28F80829755BEC0026C8A6 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		FD0E981929769C500009983F /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		FD0E981B2976ABFF0009983F /* PizzaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaModel.swift; sourceTree = "<group>"; };
 		FD28F7FC29755BEB0026C8A6 /* UINavigationViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UINavigationViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD28F7FF29755BEB0026C8A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				FD28F81729757BA30026C8A6 /* UITexfield+Extention.swift */,
 				FD28F80129755BEB0026C8A6 /* SceneDelegate.swift */,
 				FD28F80829755BEC0026C8A6 /* Assets.xcassets */,
+				FD0E981B2976ABFF0009983F /* PizzaModel.swift */,
 				FD28F80A29755BEC0026C8A6 /* LaunchScreen.storyboard */,
 				FD28F80D29755BEC0026C8A6 /* Info.plist */,
 			);
@@ -154,6 +157,7 @@
 				FD28F81429755C5E0026C8A6 /* LoginViewController.swift in Sources */,
 				FD28F80029755BEB0026C8A6 /* AppDelegate.swift in Sources */,
 				FD28F81C29758CC10026C8A6 /* ProductView.swift in Sources */,
+				FD0E981C2976ABFF0009983F /* PizzaModel.swift in Sources */,
 				FD28F80229755BEB0026C8A6 /* SceneDelegate.swift in Sources */,
 				FD0E981A29769C500009983F /* ProductViewController.swift in Sources */,
 				FD28F81829757BA30026C8A6 /* UITexfield+Extention.swift in Sources */,

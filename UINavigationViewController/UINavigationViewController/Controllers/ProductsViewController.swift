@@ -9,9 +9,9 @@ import UIKit
 
 class ProductsViewController: UIViewController {
 
-    let pepperoniPizza = ProductView(product: Pizza(name: "Пепперони", imageName: "pizza pepperoni", price: 450))
+    let pepperoniPizza = ProductView(pizza: Pizza(name: "Пепперони", imageName: "pizza pepperoni", price: 450))
     
-    let mushroomPizza = ProductView(product: Pizza(name: "Грибная", imageName: "pizza mushroom", price: 390))
+    let mushroomPizza = ProductView(pizza: Pizza(name: "Грибная", imageName: "pizza mushroom", price: 390))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +49,8 @@ class ProductsViewController: UIViewController {
 }
 
 extension ProductsViewController: ProductViewDelegate {
-    func tapPlusButton(product: Pizza) {
-        let vc = ProductViewController(product: product)
+    func tapPlusButton(pizza: Pizza) {
+        let vc = ProductViewController(pizza: pizza)
         present(vc, animated: true)
     }
 }

@@ -8,12 +8,12 @@
 import UIKit
 
 protocol ProductViewDelegate: AnyObject {
-    func tapPlusButton(product: Pizza)
+    func tapPlusButton(pizza: Pizza)
 }
 
 class ProductView: UIView {
     
-    var product: Pizza?
+    var pizza: Pizza?
     
     var delegate: ProductViewDelegate?
 
@@ -40,11 +40,11 @@ class ProductView: UIView {
         return image
     }()
     
-    init(product: Pizza) {
-        self.product = product
+    init(pizza: Pizza) {
+        self.pizza = pizza
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        setupProperts(product)
+        setupProperts(pizza)
         setupLayout()
         addGesture()
     }
@@ -68,6 +68,7 @@ class ProductView: UIView {
         self.addSubview(image)
         self.addSubview(label)
         self.addSubview(plusImage)
+
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -90,7 +91,6 @@ class ProductView: UIView {
             plusImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset*2),
             plusImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset*4),
             plusImage.widthAnchor.constraint(equalTo: plusImage.heightAnchor),
-            
         ])
     }
     
@@ -102,8 +102,8 @@ class ProductView: UIView {
     }
 
     @objc private func tapPizza() {
-        guard let product = product else { return }
-        delegate?.tapPlusButton(product: product)
+        guard let pizza = pizza else { return }
+        delegate?.tapPlusButton(pizza: pizza)
     }
     
 }

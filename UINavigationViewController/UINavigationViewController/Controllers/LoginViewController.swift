@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         textfield.layer.borderColor = UIColor.lightGray.cgColor
         textfield.layer.borderWidth = 2
         textfield.clipsToBounds = true
-        textfield.placeholder = "phone number"
+        textfield.placeholder = "phone number (введите 987654321)"
         textfield.backgroundColor = .white
         textfield.clearButtonMode = .whileEditing
         textfield.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
         textfield.clipsToBounds = true
         textfield.clearButtonMode = .whileEditing
         textfield.isSecureTextEntry = true
-        textfield.placeholder = "password"
+        textfield.placeholder = "password (введите 123456)"
         textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
@@ -85,6 +85,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray5
         setupLayout()
+        setupTapDissmisedKeyboard()
     }
     
     private func setupLayout() {
@@ -128,12 +129,19 @@ class LoginViewController: UIViewController {
         phoneTextField.shakeTextFieldifEmpty()
         let pass = passTextField.text
         let phone = phoneTextField.text
-//        if pass == "123456" && phone == "987654321" {
+        if pass == "123456" && phone == "987654321" {
             let vc = ProductsViewController()
             self.navigationController?.setViewControllers([vc], animated: true)
-//        }
-        
-        
+        }
+    }
+    
+    private func setupTapDissmisedKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

@@ -134,7 +134,6 @@ final class ProductViewController: UIViewController {
        olivesSwitch.delegate = self
         
         checkoutButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
-       
     }
     
     @objc private func tapButton() {

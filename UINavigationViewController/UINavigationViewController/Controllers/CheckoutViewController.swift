@@ -32,6 +32,58 @@ class CheckoutViewController: UIViewController {
     
     var payByCreditashLabelSwitchView = LabelSwitchView(name: "Оплата картой")
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Ваш заказ:"
+        label.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let labelsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 4
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private let label0: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let label1: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let label2: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let label3: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let labelPizza: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let payButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
@@ -42,17 +94,21 @@ class CheckoutViewController: UIViewController {
         return button
     }()
     
+    let alert = UIAlertController(
+        title: "Заказ оплачен",
+        message: "Ваш заказ доставят в течении 15 минут! \nПриятного аппетита",
+        preferredStyle: .alert
+    )
+    
     init(pizza: Pizza, adds: [String]) {
         self.adds = adds
         self.pizza = pizza
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .systemGray6
-        self.title = "Оплата"
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        
         setupLayout()
         setupSwitchers()
-        
+        setupLabelsData()
+        setupProperts()
+        setupAlertAction()
     }
     
     @available (*, unavailable)
@@ -68,12 +124,17 @@ class CheckoutViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(payButton)
         view.addSubview(switchesStack)
+        view.addSubview(titleLabel)
+        view.addSubview(labelsStack)
         
         switchesStack.addArrangedSubview(payByCashLabelSwitchView)
         switchesStack.addArrangedSubview(payByCreditashLabelSwitchView)
         
-        payByCashLabelSwitchView.delegate = self
-        payByCreditashLabelSwitchView.delegate = self
+        labelsStack.addArrangedSubview(labelPizza)
+        labelsStack.addArrangedSubview(label0)
+        labelsStack.addArrangedSubview(label1)
+        labelsStack.addArrangedSubview(label2)
+        labelsStack.addArrangedSubview(label3)
         
         let inset: CGFloat = 16
         
@@ -91,11 +152,22 @@ class CheckoutViewController: UIViewController {
             switchesStack.heightAnchor.constraint(equalToConstant: 80)
         ])
         
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: inset*2),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            labelsStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: inset*2),
+            labelsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: inset*2),
+            labelsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -inset*2),
+            labelsStack.heightAnchor.constraint(equalToConstant: 200)
+        ])
         
     }
     
     private func setupSwitchers() {
-        
         if isByCash {
             payByCreditashLabelSwitchView.switcher.isOn = true
             payByCashLabelSwitchView.switcher.isOn = false
@@ -103,8 +175,48 @@ class CheckoutViewController: UIViewController {
             payByCreditashLabelSwitchView.switcher.isOn = false
             payByCashLabelSwitchView.switcher.isOn = true
         }
+    }
+    
+    private func setupLabelsData() {
+        labelPizza.text = "Пицца " + pizza.name
         
-    } 
+        if adds.count > 1 {
+            for i in 0...adds.count-1 {
+                switch i {
+                case 0: label0.text = adds[0]
+                case 1: label1.text = adds[1]
+                case 2: label2.text = adds[2]
+                case 3: label3.text = adds[3]
+                default: return
+                }
+            }
+            
+        }
+    }
+    
+    private func setupProperts() {
+        view.backgroundColor = .systemGray6
+        self.title = "Оплата"
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        payByCashLabelSwitchView.delegate = self
+        payByCreditashLabelSwitchView.delegate = self
+        
+        payButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+    }
+    
+    @objc private func tapButton() {
+        payButton.animationTapButton()
+        present(alert, animated: true)
+    }
+    
+    private func setupAlertAction() {
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel) { action in
+            let vc = ProductsViewController()
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(alertAction)
+    }
     
 }
 

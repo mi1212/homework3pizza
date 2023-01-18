@@ -51,6 +51,14 @@ class ProductsViewController: UIViewController {
 extension ProductsViewController: ProductViewDelegate {
     func tapPlusButton(pizza: Pizza) {
         let vc = ProductViewController(pizza: pizza)
+        vc.delegate = self
         present(vc, animated: true)
+    }
+}
+
+extension ProductsViewController: ProductViewControllerDelegate {
+    func presentCheckoutViewController(pizza: Pizza, adds: [String]) {
+        let vc = CheckoutViewController(pizza: pizza , adds: adds)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

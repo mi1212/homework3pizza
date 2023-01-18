@@ -25,7 +25,7 @@ final class LabelSwitchView: UIView {
         return label
     }()
     
-    private let switcher: UISwitch = {
+    let switcher: UISwitch = {
         let switcher = UISwitch()
         switcher.onTintColor = .systemTeal
         switcher.translatesAutoresizingMaskIntoConstraints = false

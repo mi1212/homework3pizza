@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductsViewController: UIViewController {
+final class ProductsViewController: UIViewController {
 
     let pepperoniPizza = ProductView(pizza: Pizza(name: "Пепперони", imageName: "pizza pepperoni", price: 450))
     

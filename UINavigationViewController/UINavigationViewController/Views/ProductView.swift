@@ -11,7 +11,7 @@ protocol ProductViewDelegate: AnyObject {
     func tapPlusButton(pizza: Pizza)
 }
 
-class ProductView: UIView {
+final class ProductView: UIView {
     
     var pizza: Pizza?
     

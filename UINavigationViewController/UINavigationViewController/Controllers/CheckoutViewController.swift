@@ -9,9 +9,9 @@ import UIKit
 
 class CheckoutViewController: UIViewController {
 
-    var pizza: Pizza
+    private var pizza: Pizza
     
-    var adds: [String]
+    private var adds: [String]
     
     var isByCash = false {
         didSet {
@@ -28,9 +28,9 @@ class CheckoutViewController: UIViewController {
         return stack
     }()
     
-    var payByCashLabelSwitchView = LabelSwitchView(name: "Оплата наличкой")
+    private var payByCashLabelSwitchView = LabelSwitchView(name: "Оплата наличкой")
     
-    var payByCreditashLabelSwitchView = LabelSwitchView(name: "Оплата картой")
+    private var payByCreditashLabelSwitchView = LabelSwitchView(name: "Оплата картой")
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -94,7 +94,7 @@ class CheckoutViewController: UIViewController {
         return button
     }()
     
-    let alert = UIAlertController(
+    private let alert = UIAlertController(
         title: "Заказ оплачен",
         message: "Ваш заказ доставят в течении 15 минут! \nПриятного аппетита",
         preferredStyle: .alert
@@ -212,7 +212,6 @@ class CheckoutViewController: UIViewController {
     
     private func setupAlertAction() {
         let alertAction = UIAlertAction(title: "Ok", style: .cancel) { action in
-            let vc = ProductsViewController()
             self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(alertAction)

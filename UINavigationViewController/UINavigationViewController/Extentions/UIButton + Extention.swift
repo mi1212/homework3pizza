@@ -20,8 +20,6 @@ extension UIButton {
         } completion: { handler in
             UIView.animate(withDuration: time, delay: 0) {
                 self.transform = self.transform.scaledBy(x: 1/scale, y: 1/scale)
-            } completion: { handler in
-                
             }
         }
     }

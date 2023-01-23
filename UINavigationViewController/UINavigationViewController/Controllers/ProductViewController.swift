@@ -13,11 +13,11 @@ protocol ProductViewControllerDelegate: AnyObject {
 
 final class ProductViewController: UIViewController {
     // массив дополнительных ингридиентов
-    var addsArray = [String]()
+    private var addsArray = [String]()
     
-    var pizza: Pizza?
+    private var pizza: Pizza?
     
-    var delegate: ProductViewControllerDelegate?
+    weak var delegate: ProductViewControllerDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
